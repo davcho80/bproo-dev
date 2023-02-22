@@ -1,10 +1,14 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const Ajouter = () => {
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
     const [body, setBody] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+
+    const navigate = useNavigate();
 
     const HandleBlogAdding = (e) => {
         e.preventDefault();
@@ -21,6 +25,8 @@ const Ajouter = () => {
         ).then( () => {
             console.log('article ajouter avec succes.');
             setIsLoading(false);
+            navigate('/', {replace: true});
+        
         })
     }
 
@@ -39,16 +45,13 @@ const Ajouter = () => {
                 </div>
                 <div className="form-group">
                     <label htmlFor="author">Selectionez un auteur</label>
-                    <select 
+                    <input type="text" 
                         required 
                         className="form-control"
                         id="author"
                         value={author}
                         onChange={ (e) => setAuthor(e.target.value) }>
-                        <option value=""></option>
-                        <option value="Tony">Tony</option>
-                        <option value="Duplex">Duplex</option>
-                    </select>
+                    </input>
                 </div>
                 <div className="form-group">
                     <label htmlFor="body">Contenu de l'article</label>
