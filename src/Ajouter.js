@@ -72,3 +72,5 @@ const Ajouter = () => {
 }
  
 export default Ajouter;
+
+// window.location.reload(false);
