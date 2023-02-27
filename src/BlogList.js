@@ -3,16 +3,17 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const BlogList = ({ blogs, title }) => {
-  const [updatedBlogs, setUpdatedBlogs] = useState(blogs);
+    const [updatedBlogs, setUpdatedBlogs] = useState(blogs);
 
-  function DeleteBlog(id) {
+
+const DeleteBlog = (id) =>{
     fetch(`http://localhost:8000/blogs/${id}`, {
-      method: 'DELETE'
-    }).then(() => {
-      console.log(id);
-      setUpdatedBlogs(updatedBlogs.filter((blog) => blog.id !== id));
-    });
-  }
+        method: 'DELETE'
+      }).then(() => {
+        console.log(id);
+        setUpdatedBlogs(updatedBlogs.filter((blog) => blog.id !== id));
+      }); 
+}
 
   useEffect(() => {
     setUpdatedBlogs(blogs);
@@ -38,3 +39,4 @@ const BlogList = ({ blogs, title }) => {
 };
 
 export default BlogList;
+

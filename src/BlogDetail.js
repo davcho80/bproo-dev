@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import useRecuperation from "./useRecuperation.js";
 
+
 const BlogDetail = () => {
     const { id } = useParams();
     const {data: blog, isLoading, error} = useRecuperation('http://localhost:8000/blogs/'+id);
