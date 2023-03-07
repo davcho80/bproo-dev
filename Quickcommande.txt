@@ -1,0 +1,282 @@
+Quand on mettre un listener sur un bouton du DOM et quand on click il start exemple ici une fonction getDrink
+document.querySelector('button').addEventListener('click', getDrink)
+
+Convertir un input du DOM dans une variable
+let choice = (document.getElementsByName('input').value)
+
+Mettre du text ou un link vers une photo dans le DOM
+Ici c'etait pour l'exemple de l'api pour les cocktail
+
+document.querySelector('h2').innerText = data.drinks[0].strDrink     il ramasse dans le retour de lapi lobjet 0 et un drink  
+        document.querySelector('img').src = data.drinks[0].strDrinkThumb si cest une image on mets .src et le lien apres
+        document.querySelector('h3').innerText = data.drinks[0].strInstructions et autre exemple pour change un h3 et mettre du text
+
+
+--------------------------------------------------------------------------------------------------------
+Une exemple de class
+class TVShow{
+    constructor(type,actor,lenght,time){
+        this.type = typeOfFilm
+        this.actor = actorName
+        this.lenght = movietime
+        this.time = dateOfFilm
+    }
+    function1(){
+        alert('this is function 1')
+    }
+    function(){
+        alert('function2')
+    }
+    function(){
+        alert('function3')
+        
+    }
+}
+-----------------------------------------------------------------------------------------------------------
+
+fetcher un api
+fetch(url)      //lurl doit etre mis dans une variable avant ou on met le url complet entre les paranthese
+    ,then(res => res.json()) // mettre la reponse en format json
+    .then(data => {
+        // ici on rajoute ce quon veut faire avec comme manipuler le DOM
+        document.querySelector('img').src = pour passer exemple une url de photo
+        document.querySelector('h3').innerText = pour mettre du text dans une h3
+        on peut aussi mettre une console.log(data) pour voir ce que lapi envoi comme parametre ou autre dans lobjet
+    })
+Exemple pour le api de la NASA il faut rajouter le & et exemple date apres le token
+Lapi de la Nasa on peut faire une count qui va nous envoyer exemple un array de 5 photo
+certain api comme celui de la cocktail db demande davoir un parametre de recherche 
+
+Maniere plus simple et sexy de caller un api
+async function getACuteDogPhoto(){
+    const res = await fetch('https://dog.ceo/api/breeds/image/random')
+    const data = await res.json
+    console.log(data)
+}
+getACuteDogPhoto()
+
+-----------------------------------------------------------------------------------------------------
+
+facon de rajouter des element dans le DOM
+ const li = document.createElement('li')
+        li.textContent = element.name
+        document.querySelector('ul').appendChild(li) 
+Exemple ici nous rajoutons des li dans le ul du DOM cetai pour un array donc ici il y a une variable li pour le for each li
+-------------------------------------------------------------------------------------------------
+
+Local storage
+localStorage.setItem('bestFriend', 'Bob')   ferai un entre dans le browser 
+localStorage.getItem('bestFriend)   sortirait bob
+localStorage.removeItem('bestFriend', 'bob') va enlever 
+localStorage.clear() va toute enlever
+---------------------------------------------------------------------------
+
+if(condition is true) {                ne pas oublier quon peut utiliser le bang ! pour renverse la condition 
+    mettre les commande ici
+}else if (cette condition est true){
+    mettre les commande ici
+}else{
+    faire ceci si aucune condition est vrai, cest pour ca quiil ny a pas de paranthese pour la condition
+}
+
+
+if (name ==== "leon"  &&  status ==== "Ballin"){              condition ca et ca 
+    fait ceci 
+} 
+
+
+if (name ==== "leon"  ||  status ==== "Ballin"){              condition ca ou ca 
+    fait ceci 
+} 
+-----------------------------------------------------------------------------------
+
+Loop
+for (let i = 1; i < 5; i++){
+        console.log(i)
+}
+-----------------------------------------------------------------------------------
+function name(parametre){
+    on fait quoi
+}
+//call
+name(arguments)
+
+function par expression
+dans cette fonction on associe la fonction a une variable
+const salutation = function(){
+    on rajoute les tache a faire ici
+    on peut aussi mettre un return qui va retourner la valeur apres un calcul
+    return valeur; dans la fonction quand il attend le return il arrete 
+}
+
+et appele la variable qui contient la fonction avec les ()
+salutation(); on pourrait aussi passer entre paranthese les parametre
+dans le cas d'une fonction a retour il faut associer la call a une variable 
+sinon le return de la fonction va juste garder en memoire le resultat
+exemple
+function surfaceRectangle() {
+    let longeur = 15;
+    let largeur = 10;
+    return longeur * largeur;
+}
+const resultat = surfaceRectangle();
+
+Arrow fonction simplifier quand il y a seulement une ligne de code
+const surfacerect = (L, l) => {
+    return L*l;
+}
+cest la meme chose que
+const surfacerect = (L, l) => L*l;  
+
+
+
+exemple de fontion qui call un autre fonction
+function tempConvert(f){
+    return (f - 32) * 5/9                ici la fonction convertie les celcius en Fahrenheit et return la reponse
+}
+
+function canCharBattle(tempVal){
+    let temperature = tempConvert(tempVal)    ici on creer une variable temp qui call la fonction tempConvert en lui passant
+    if (temperature > 0)                      la temperature recu dans tempVal et il la passe dans le f de tempConvert
+      console.log("test")
+}
+canCharBattle(31)
+
+
+function reversesParty(arr){                  fonction qui fait un reverse sur un array de nombre
+    return arr.reverse()
+}
+
+
+function compareArr(a,b){                                                            exemple de fonction qui reduit des array a un nombre ici une racine et un cube et retour deux valeur a et b
+    return a.reduce((acc, c) => acc + c**2, 0) > b.reduce((acc,c) => c**3, 0)               le acc ici est juste un nom de variable choisi pour accumulater
+}                                                                le 0 apres la , fait juste enlever la possibilite derreur bizzare avec .reduce 
+
+
+function isMultiple(arr){                exemple de fonction avec un array qui filtre si le chiffre et un multiple de lindex de larray
+   return arr.filter((e,i) => e % i === 0)  ici e = element et i = index on utilise modulos pour savoir si cest un multiple de 
+}
+
+
+
+
+
+Exemple de class avec deux children
+class Contractor{
+    constructor(name,role){
+        this._name = name
+        this._role = role
+    }
+    get name(){
+        return this._name
+    }
+    get role(){
+        return this._role
+    }
+    sayHello(){
+        console.log(`Hello, I am on the ${this._role} team at #100Devs!`)
+    }
+}
+class Front extends Contractor{
+    constructor(name,role,tech){
+        super(name,role)
+        this._tech = tech
+    }
+    get tech(){
+        return this._tech
+    }
+    sayHello(){
+        console.log(`Hello, I am on the ${this._role} team at #100Devs and I use ${this._tech}`)
+    }
+}
+class Back extends Contractor{
+    constructor(name,role,tech){
+        super(name,role)
+        this._tech = tech
+    }
+    get tech(){
+        return this._tech
+    }
+    sayHello(){
+        console.log(`Hello, I am on the ${this._role} team at #100Devs and I use ${this._tech}`)
+    }
+}
+let bob = new Contractor('Bob','Front-end')
+let simba = new Front('Simba','Front-end','React')
+let machi = new Back('The Machine','Back-end','Node')
+
+let agency = [bob,simba,machi]
+
+for(person of agency){
+    person.sayHello()
+}
+
+Objet litteral comme lecrire
+// propriete 
+cont personne = {
+    nom: 'Duplex',
+    email: 'allo@allo.com',
+    age: 25,
+    taille: 1.85,
+    couleur: 'Noire'
+    blogs: ['mon tuto', 'les de React'],
+    // methode
+    login: function(){
+       instruction ici  
+    },
+    logout: function (){
+     instruction de la 2ieme fonction 
+    };
+
+
+};
+
+this permet de recupere toute les valeur dun Objet
+permet dacceder au propriete dun objet a linterieure dun objet
+le this ne peut pas etre utiliser dans une methode creer avec un arrow function 
+
+
+
+10 chose interessante de javascript
+1- spread operator 
+2- le in exemple ('salaire' in personne)
+3- 
+
+
+
+
+-------------------------------------------------------------------------------
+Express
+npm install express --save   important le --save il va mettre a jour le package.json et rajouter Node_modules
+
+Environement
+Avec le package Environement ca fait un fichier .env on peut mettre des info dedans quon peut reutiliser dans
+notre javascript pour exemple garder secret un mot de passe
+DB_STRING = mongodb+srv://Blinking8694:cUF8KdDG5SSGd2@cluster0.xchq7sl.mongodb.net/nomdeladatabase?retryWrites=true&w=majority
+On peut mettre le .env dans le .gitignore pour ignorer le fichier 
+et dans Heroku on peut faire un
+heroku config:set DB_STRING = 
+mongodb+srv://Blinking8694:cUF8KdDG5SSGd2@cluster0.xchq7sl.mongodb.net/?retryWrites=true&w=majorityDB_STRING = mongodb+srv://Blinking8694:cUF8KdDG5SSGd2@cluster0.xchq7sl.mongodb.net/?retryWrites=true&w=majority
+dans le code on peut donc utiliser dbConnectionStr = process.env.DB_STRING,
+il va aller voir dans le env la variable DB_STRING
+
+
+MVC
+Router ecoute les requetes et renvoi au bon controller 
+Controller les commande CRUD
+model schema et les query bd 
+view 
+
+
+
+React 
+Componenent partie reutiliser a different place au lieu de reecrire a toute
+les fois pense a facebook toute les partie sont pas mal reutilisable 
+
+props cest quelque chose quon peut passer au travers dun Componenent 
+exemple les dots de notification dans facebook il on toute la meme shape cest 
+le meme Componenent mais on passe on props au travers pour la couleur
+
+State 
+
+virutal dom 
